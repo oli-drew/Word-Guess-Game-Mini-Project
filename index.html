@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Guess</title>
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Word Guess</h1>
+      <button id="startGame">Start Game</button>
+      <span id="timer">Time left: 180 seconds</span>
+    </header>
+
+    <main>
+      <section>
+        <p id="word">
+          Word to Guess: <span id="letter1">_</span> <span id="letter2">_</span>
+          <span id="letter3">_</span>
+        </p>
+      </section>
+
+      <section>
+        <input type="text" id="letterGuess" />
+        <button id="submitGuess">Submit Guess</button>
+      </section>
+
+      <section>
+        <p>Your guess so far:</p>
+        <div id="previousGuesses"></div>
+      </section>
+    </main>
+  </body>
+  <script src="./assets/app.js"></script>
+</html>
