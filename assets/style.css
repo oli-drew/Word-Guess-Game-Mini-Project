@@ -17,3 +17,8 @@ main {
 #word {
   font-size: 2em;
 }
+
+#word span {
+  font-size: 1.5em;
+  padding: 0.15em;
+}

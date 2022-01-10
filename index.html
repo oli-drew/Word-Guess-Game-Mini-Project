@@ -11,20 +11,12 @@
     <header>
       <h1>Word Guess</h1>
       <button id="startGame">Start Game</button>
-      <span id="timer">Time left: 180 seconds</span>
+      <span id="timer"></span>
     </header>
 
     <main>
       <section>
-        <p id="word">
-          Word to Guess: <span id="letter1">_</span> <span id="letter2">_</span>
-          <span id="letter3">_</span>
-        </p>
-      </section>
-
-      <section>
-        <input type="text" id="letterGuess" />
-        <button id="submitGuess">Submit Guess</button>
+        <p id="word"></p>
       </section>
 
       <section>
@@ -32,6 +24,12 @@
         <div id="previousGuesses"></div>
       </section>
     </main>
+    <footer>
+      <section>
+        <p>Previous scores:</p>
+        <div id="scores"></div>
+      </section>
+    </footer>
   </body>
   <script src="./assets/app.js"></script>
 </html>
