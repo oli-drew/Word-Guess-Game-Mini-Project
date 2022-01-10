@@ -14,21 +14,16 @@ const wordList = [
 
 // Word to guess
 let word = "";
-
 // Word length
 let wordLength = 0;
-
-// Word to guess converted to array
+// Word to guess array
 let wordArr = [];
-
 // Array to store previous guesses
 let prevGuesses = [];
-
 // Array to store previous guesses
 const scores = [];
-
-// 180 second timer (3 mins)
-let timer = 18;
+// Timer
+let timer = 0;
 
 // Select a random word from the list
 function randomWord() {
@@ -75,20 +70,20 @@ function displayWord() {
 
 // Check answer on keydown event
 function keydownAction(event) {
-  checkAnswer(event.key);
+  checkAnswer(event.key.toLowerCase());
 }
 
 // Check if exists in array function
 function checkAnswer(input) {
   // Check if the word contains the input letter
   if (wordArr.includes(input.toString())) {
-    console.log("Correct the word contains " + input);
+    // console.log("Correct the word contains " + input);
     // Replace blank with letter
     replaceBlank(input);
     // Save previous guesses to an array
     saveGuess(input);
   } else {
-    console.log("Try again!");
+    // console.log("Try again!");
     saveGuess(input);
   }
   checkWin(wordArr, prevGuesses);
@@ -104,8 +99,8 @@ function replaceBlank(correctLetter) {
 function checkWin(arr, arr2) {
   // Check if every value within prevGuesses contains the values of  wordArray
   if (arr.every((i) => arr2.includes(i))) {
-    console.log("You Win!!!!");
-    console.log("The correct word is: " + word);
+    // console.log("You Win!!!!");
+    // console.log("The correct word is: " + word);
     // Win
     winner();
   }
@@ -115,10 +110,10 @@ function checkWin(arr, arr2) {
 function startGame() {
   document.querySelector("main").style.display = "block";
   resetGame();
-  console.log("start");
+  // console.log("start");
   randomWord();
-  console.log(word);
-  console.log(`Word length: ${wordLength}`);
+  // console.log(word);
+  // console.log(`Word length: ${wordLength}`);
   displayWord();
   document.addEventListener("keydown", keydownAction);
   countdownTimer();
@@ -138,42 +133,40 @@ function saveGuess(guess) {
   prevGuessEl.textContent = prevGuesses;
 }
 
-// Record score and save to local storage
-function recordScore(result) {
-  let prevScores = getScores();
-  let newScores = "";
-  if (prevScores) {
-    newScores = prevScores + "," + result;
-  } else {
-    newScores = result;
-  }
-  localStorage.setItem("scores", newScores);
-  // scoresEl.textContent = newScores;
-  displayScores(newScores);
+// Record win
+function recordWin() {
+  let win = localStorage.getItem("win");
+  win++;
+  localStorage.setItem("win", win.toString());
+  displayScores();
 }
 
-// Get scores from local storage
-function getScores() {
-  return localStorage.getItem("scores");
+// Record loss
+function recordLoss() {
+  let loss = localStorage.getItem("loss");
+  loss++;
+  localStorage.setItem("loss", loss.toString());
+  displayScores();
 }
 
 // Display scores
-const scoresEl = document.querySelector("#scores");
-function displayScores(scores) {
-  scoresEl.textContent = scores;
+const winEl = document.querySelector("#win");
+const lossEl = document.querySelector("#loss");
+function displayScores() {
+  winEl.textContent = `Wins: ${localStorage.getItem("win")}`;
+  lossEl.textContent = `Losses: ${localStorage.getItem("loss")}`;
 }
 
 // Game Over
 function gameOver() {
   wordElement.innerHTML = "Game Over! - The correct answer was: " + word;
-  recordScore("loss");
+  recordLoss();
 }
 
 // Win
 function winner() {
-  wordElement.innerHTML = "WINNER!!!";
-  // scores.push("win");
-  recordScore("win");
+  wordElement.innerHTML = "WINNER!!! - The word was: " + word;
+  recordWin();
   clearInterval(timerInterval);
 }
 
@@ -181,10 +174,10 @@ function winner() {
 function resetGame() {
   clearInterval(timerInterval);
   prevGuesses = [];
-  timer = 18;
+  timer = 30;
   wordElement.innerHTML = "";
   prevGuessEl.innerHTML = "";
 }
 
 // On page load
-document.onload = displayScores(getScores());
+document.onload = displayScores();
