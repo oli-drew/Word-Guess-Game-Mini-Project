@@ -10,6 +10,16 @@ const wordList = [
   "absurd",
   "tail",
   "cat",
+  "scientific",
+  "appreciate",
+  "red",
+  "laughable",
+  "quiver",
+  "interrupt",
+  "pollution",
+  "fair",
+  "cynical",
+  "hover",
 ];
 
 // Word to guess
@@ -108,7 +118,7 @@ function checkWin(arr, arr2) {
 
 // Start Game
 function startGame() {
-  document.querySelector("main").style.display = "block";
+  document.querySelector("#guesses").style.display = "block";
   resetGame();
   // console.log("start");
   randomWord();
@@ -153,19 +163,28 @@ function recordLoss() {
 const winEl = document.querySelector("#win");
 const lossEl = document.querySelector("#loss");
 function displayScores() {
-  winEl.textContent = `Wins: ${localStorage.getItem("win")}`;
-  lossEl.textContent = `Losses: ${localStorage.getItem("loss")}`;
+  if (localStorage.getItem("win")) {
+    winEl.textContent = `Wins: ${localStorage.getItem("win")}`;
+  } else {
+    winEl.textContent = "Wins: 0";
+  }
+
+  if (localStorage.getItem("loss")) {
+    lossEl.textContent = `Losses: ${localStorage.getItem("loss")}`;
+  } else {
+    lossEl.textContent = "Losses: 0";
+  }
 }
 
 // Game Over
 function gameOver() {
-  wordElement.innerHTML = "Game Over! - The correct answer was: " + word;
+  wordElement.innerHTML = "Game Over!";
   recordLoss();
 }
 
 // Win
 function winner() {
-  wordElement.innerHTML = "WINNER!!! - The word was: " + word;
+  wordElement.innerHTML = "You win!";
   recordWin();
   clearInterval(timerInterval);
 }
