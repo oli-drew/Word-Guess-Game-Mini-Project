@@ -95,13 +95,11 @@ function checkAnswer(input) {
   // Check if the word contains the input letter
   input = input.toLowerCase();
   if (wordArr.includes(input.toString())) {
-    // console.log("Correct the word contains " + input);
     // Replace blank with letter
     replaceBlank(input);
     // Save previous guesses to an array
     saveGuess(input);
   } else {
-    // console.log("Try again!");
     saveGuess(input);
   }
   checkWin(wordArr, prevGuesses);
@@ -117,8 +115,6 @@ function replaceBlank(correctLetter) {
 function checkWin(arr, arr2) {
   // Check if every value within prevGuesses contains the values of  wordArray
   if (arr.every((i) => arr2.includes(i))) {
-    // console.log("You Win!!!!");
-    // console.log("The correct word is: " + word);
     // Win
     winner();
   }
@@ -128,15 +124,9 @@ function checkWin(arr, arr2) {
 function startGame() {
   document.querySelector("#guesses").style.display = "block";
   resetGame();
-  // Focus input to open mobile Keyboard
-  // document.querySelector("#mobile-input").focus();
-  // console.log("start");
   randomWord();
-  // console.log(word);
-  // console.log(`Word length: ${wordLength}`);
   mobileChecker();
   displayWord();
-  // document.addEventListener("keydown", keydownAction); // remove comment to fix
   countdownTimer();
   startBtn.textContent = "New Game";
 }
@@ -148,6 +138,7 @@ function mobileChecker() {
     document.addEventListener("keydown", keydownAction);
     console.log("desktop " + screen.width);
   } else {
+    mobileInput.style.visibility = "visible";
     mobileInput.focus();
     mobileInput.addEventListener("input", mobileInputAction);
     console.log("mobile " + screen.width);

@@ -11,10 +11,14 @@ body {
   padding: 0.15em;
 }
 
-@media only screen and (min-width: 1025px) {
+/* @media only screen and (min-width: 1025px) {
   #mobile-input {
     visibility: hidden;
   }
+} */
+
+#mobile-input {
+  visibility: hidden;
 }
 
 input[type="text"] {
@@ -29,4 +33,5 @@ input[type="text"] {
 
 .form-control:focus {
   background-color: #0d6efd;
+  caret-color: transparent;
 }
