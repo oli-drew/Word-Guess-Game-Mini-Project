@@ -74,7 +74,6 @@ function displayWord() {
     spanEl.textContent = "_";
     spanEl.setAttribute("class", `letter-${wordArr[i]}`);
     wordElement.appendChild(spanEl);
-    // console.log(wordArr[i]);
   }
 }
 
@@ -202,6 +201,8 @@ function gameOver() {
 // Win
 function winner() {
   wordElement.innerHTML = "You win! - Answer: " + word;
+  document.removeEventListener("keydown", keydownAction);
+  mobileInput.removeEventListener("input", mobileInputAction);
   recordWin();
   clearInterval(timerInterval);
 }
