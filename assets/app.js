@@ -120,6 +120,8 @@ function checkWin(arr, arr2) {
 function startGame() {
   document.querySelector("#guesses").style.display = "block";
   resetGame();
+  // Focus input to open mobile Keyboard
+  document.querySelector("#mobile-input").focus();
   // console.log("start");
   randomWord();
   // console.log(word);

@@ -10,3 +10,7 @@ body {
   font-size: 1.5em;
   padding: 0.15em;
 }
+
+input {
+  visibility: hidden;
+}
