@@ -83,6 +83,13 @@ function keydownAction(event) {
   checkAnswer(event.key.toLowerCase());
 }
 
+// Alternate to keydown for mobile
+const mobileInput = document.getElementById("mobile-input");
+mobileInput.addEventListener("input", (e) => {
+  console.log(`Key "${e.data}" input  [event: input]`);
+  checkAnswer(e.data.toLowerCase());
+});
+
 // Check if exists in array function
 function checkAnswer(input) {
   // Check if the word contains the input letter
@@ -127,7 +134,7 @@ function startGame() {
   // console.log(word);
   // console.log(`Word length: ${wordLength}`);
   displayWord();
-  document.addEventListener("keydown", keydownAction);
+  // document.addEventListener("keydown", keydownAction); // remove comment to fix
   countdownTimer();
 }
 
