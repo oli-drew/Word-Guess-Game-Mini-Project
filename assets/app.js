@@ -137,21 +137,25 @@ function startGame() {
   displayWord();
   // document.addEventListener("keydown", keydownAction); // remove comment to fix
   countdownTimer();
+  startBtn.textContent = "New Game";
 }
 
 // Mobile or Desktop
 function mobileChecker() {
-  if (window.matchMedia("(min-width: 1025px)")) {
+  if (screen.width > 1025) {
     document.addEventListener("keydown", keydownAction);
+    console.log("desktop " + screen.width);
   } else {
     const mobileInput = document.getElementById("mobile-input");
     mobileInput.focus();
     mobileInput.addEventListener("input", mobileInputAction);
+    console.log("mobile " + screen.width);
   }
 }
 
 // Start Button Click
-document.querySelector("#startGame").addEventListener("click", startGame);
+const startBtn = document.querySelector("#startGame");
+startBtn.addEventListener("click", startGame);
 
 // Save previous guess
 const prevGuessEl = document.querySelector("#previousGuesses");
