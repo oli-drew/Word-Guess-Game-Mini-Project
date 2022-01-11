@@ -204,13 +204,13 @@ function displayScores() {
 
 // Game Over
 function gameOver() {
-  wordElement.innerHTML = "Game Over!";
+  wordElement.innerHTML = "Game Over! - Answer: " + word;
   recordLoss();
 }
 
 // Win
 function winner() {
-  wordElement.innerHTML = "You win!";
+  wordElement.innerHTML = "You win! - Answer: " + word;
   recordWin();
   clearInterval(timerInterval);
 }
