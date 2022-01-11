@@ -79,16 +79,16 @@ function displayWord() {
 }
 
 // Check answer on keydown event
-function keydownAction(event) {
+// function keydownAction(event)
+const keydownAction = (event) => {
   checkAnswer(event.key.toLowerCase());
-}
+};
 
 // Alternate to keydown for mobile
-const mobileInput = document.getElementById("mobile-input");
-mobileInput.addEventListener("input", (e) => {
-  console.log(`Key "${e.data}" input  [event: input]`);
+const mobileInputAction = (e) => {
   checkAnswer(e.data.toLowerCase());
-});
+  mobileInput.value = "";
+};
 
 // Check if exists in array function
 function checkAnswer(input) {
@@ -128,14 +128,26 @@ function startGame() {
   document.querySelector("#guesses").style.display = "block";
   resetGame();
   // Focus input to open mobile Keyboard
-  document.querySelector("#mobile-input").focus();
+  // document.querySelector("#mobile-input").focus();
   // console.log("start");
   randomWord();
   // console.log(word);
   // console.log(`Word length: ${wordLength}`);
+  mobileChecker();
   displayWord();
   // document.addEventListener("keydown", keydownAction); // remove comment to fix
   countdownTimer();
+}
+
+// Mobile or Desktop
+function mobileChecker() {
+  if (window.matchMedia("(min-width: 1025px)")) {
+    document.addEventListener("keydown", keydownAction);
+  } else {
+    const mobileInput = document.getElementById("mobile-input");
+    mobileInput.focus();
+    mobileInput.addEventListener("input", mobileInputAction);
+  }
 }
 
 // Start Button Click
