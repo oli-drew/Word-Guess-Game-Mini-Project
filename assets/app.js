@@ -195,6 +195,7 @@ function displayScores() {
 // Game Over
 function gameOver() {
   wordElement.innerHTML = "Game Over! - Answer: " + word;
+  mobileInput.style.visibility = "hidden";
   recordLoss();
 }
 
@@ -203,6 +204,7 @@ function winner() {
   wordElement.innerHTML = "You win! - Answer: " + word;
   document.removeEventListener("keydown", keydownAction);
   mobileInput.removeEventListener("input", mobileInputAction);
+  mobileInput.style.visibility = "hidden";
   recordWin();
   clearInterval(timerInterval);
 }
