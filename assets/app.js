@@ -81,18 +81,19 @@ function displayWord() {
 // Check answer on keydown event
 // function keydownAction(event)
 const keydownAction = (event) => {
-  checkAnswer(event.key.toLowerCase());
+  checkAnswer(event.key);
 };
 
 // Alternate to keydown for mobile
 const mobileInputAction = (e) => {
-  checkAnswer(e.data.toLowerCase());
+  checkAnswer(e.data);
   mobileInput.value = "";
 };
 
 // Check if exists in array function
 function checkAnswer(input) {
   // Check if the word contains the input letter
+  input = input.toLowerCase();
   if (wordArr.includes(input.toString())) {
     // console.log("Correct the word contains " + input);
     // Replace blank with letter
@@ -141,12 +142,12 @@ function startGame() {
 }
 
 // Mobile or Desktop
+const mobileInput = document.getElementById("mobile-input");
 function mobileChecker() {
   if (screen.width > 1025) {
     document.addEventListener("keydown", keydownAction);
     console.log("desktop " + screen.width);
   } else {
-    const mobileInput = document.getElementById("mobile-input");
     mobileInput.focus();
     mobileInput.addEventListener("input", mobileInputAction);
     console.log("mobile " + screen.width);
