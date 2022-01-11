@@ -218,5 +218,16 @@ function resetGame() {
   prevGuessEl.innerHTML = "";
 }
 
+// Reset Scores
+const resetBtn = document.querySelector("#reset");
+resetBtn.addEventListener("click", resetScores);
+function resetScores() {
+  // CLear local storage
+  localStorage.clear();
+  //
+  winEl.textContent = "Wins: 0";
+  lossEl.textContent = "Losses: 0";
+}
+
 // On page load
 document.onload = displayScores();

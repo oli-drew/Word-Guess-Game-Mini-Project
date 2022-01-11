@@ -35,3 +35,7 @@ input[type="text"] {
   background-color: #0d6efd;
   caret-color: transparent;
 }
+
+.padding-right {
+  padding-right: 1em;
+}
