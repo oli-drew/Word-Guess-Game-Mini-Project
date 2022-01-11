@@ -11,14 +11,11 @@ body {
   padding: 0.15em;
 }
 
-/* @media only screen and (min-width: 1025px) {
-  #mobile-input {
-    visibility: hidden;
-  }
-} */
-
 #mobile-input {
   visibility: hidden;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  border-radius: 0.3rem;
 }
 
 input[type="text"] {
