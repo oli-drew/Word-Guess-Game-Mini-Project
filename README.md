@@ -22,3 +22,7 @@ https://oli-drew.github.io/Word-Guess-Game-Mini-Project/
 ## License
 
 [MIT License](LICENSE)
+
+## Contact Information
+
+[Email: oli_webdev@protonmail.com](mailto:oli_webdev@protonmail.com)
